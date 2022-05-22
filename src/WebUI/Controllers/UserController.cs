@@ -19,12 +19,6 @@ public class UserController : Controller
 
     protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
 
-    [HttpGet]
-    public ActionResult Test()
-    {
-        return Ok("TestOk");
-    }
-    
     [Authorize]
     [HttpPost("GetUserById")]
     public async Task<ApplicationUserDto> GetUserById(GetUserByIdQuery query)

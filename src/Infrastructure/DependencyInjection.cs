@@ -43,10 +43,10 @@ public static class DependencyInjection
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
-
+        services.AddSingleton<IMqttService, MqttService>();
         // services.AddAuthentication()
         //     .AddIdentityServerJwt();
-
+        services.AddHostedService<MyService>();
         services.AddAuthorization(options => 
             options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator")));
 
